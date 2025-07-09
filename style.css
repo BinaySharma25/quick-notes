@@ -1,0 +1,675 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --brand-color: #8b90ff;
+  --base-color: #f2f4f8;
+  --surface-color: #fff;
+  --text-color: #191b23;
+  --secondary-text-color: #3c404f;
+  --base-transparent-90: rgba(247, 247, 247, 0.9);
+  --base-transparent-100: rgba(247, 247, 247, 1);
+}
+
+.dark-theme {
+  --brand-color: #8b90ff;
+  --base-color: #1e1f26;
+  --surface-color: #2c2f38;
+  --text-color: #f0f0f0;
+  --secondary-text-color: #b0b3c0;
+  --base-transparent-90: rgba(30, 31, 38, 0.9);
+  --base-transparent-100: rgba(30, 31, 38, 1);
+}
+
+body {
+  font-family: Poppins, sans-serif;
+  margin: 1rem;
+  background: var(--base-color);
+  color: var(--text-color);
+  font-size: 16px;
+}
+
+h1 {
+  margin-bottom: 1rem;
+  font-size: 1.75rem;
+}
+
+button, input, textarea {
+  font: inherit;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+header > div {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+#searchInput {
+  max-width: 400px;
+  width: 100%;
+  min-width: 120px;
+  flex: 1 1 0;
+  margin-top: 0;
+  font-size: 1rem;
+  padding: 0.875rem 1rem;
+  box-sizing: border-box;
+}
+
+.add-note-btn {
+  background: var(--brand-color);
+  color: white;
+  border: none;
+  padding: 0.875rem 1.75rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  font-size: 1rem;
+}
+
+.add-note-btn:hover {
+  background: #7a7fff;
+}
+
+.theme-toggle-btn {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--surface-color);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  margin-left: 0;
+  min-height: 44px;
+  font-size: 1.125rem;
+}
+
+.theme-toggle-btn:hover {
+  background: var(--brand-color);
+  color: white;
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: start;
+}
+
+.note-card {
+  background: var(--surface-color);
+  border-radius: 0.75rem;
+  padding: 1.25rem;
+  border: 1px solid var(--surface-color);
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.note-card:hover {
+  transform: scale(1.01);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.note-title {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  color: var(--text-color);
+  word-wrap: break-word;
+  padding-right: 3rem;
+}
+
+.note-content {
+  color: var(--secondary-text-color);
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+.note-meta {
+  margin-bottom: 0.5rem;
+  color: var(--secondary-text-color);
+  font-size: 0.85rem;
+}
+
+.note-actions {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  gap: 0.5rem;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.2s ease;
+}
+
+.edit-btn, .delete-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  background: var(--base-transparent-90);
+  color: var(--text-color);
+  border: 1px solid var(--surface-color);
+  min-width: 44px;
+  min-height: 44px;
+}
+
+.edit-btn:hover {
+  background: var(--base-transparent-100);
+  transform: scale(1.05);
+}
+
+.delete-btn:hover {
+  background: #ff5252;
+  transform: scale(1.05);
+  color: white;
+}
+
+.pin-btn {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  backdrop-filter: blur(10px);
+  background: var(--base-transparent-90);
+  color: var(--text-color);
+  border: 1px solid var(--surface-color);
+  min-width: 44px;
+  min-height: 44px;
+  font-size: 1.25rem;
+}
+
+.pin-btn:hover {
+  background: var(--brand-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+dialog {
+  margin: auto;
+  inset: 0;
+  border: none;
+  border-radius: 1rem;
+  padding: 0;
+  background: var(--surface-color);
+  color: var(--text-color);
+  max-width: 500px;
+  width: 95vw;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(4px);
+}
+
+.dialog-content {
+  padding: 1.5rem;
+}
+
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.dialog-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--secondary-text-color);
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background 0.2s ease;
+  min-width: 44px;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.close-btn:hover {
+  background: var(--surface-color);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-color);
+  font-size: 0.95rem;
+}
+
+.form-input, .form-textarea {
+  width: 100%;
+  padding: 0.875rem;
+  border: 2px solid var(--surface-color);
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  transition: border-color 0.2s ease;
+  background: var(--base-color);
+  color: var(--text-color);
+  min-height: 44px;
+}
+
+.form-input:focus, .form-textarea:focus {
+  outline: none;
+  border-color: var(--brand-color);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.dialog-actions {
+  display: flex;
+  gap: 0.75rem;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.cancel-btn, .save-btn {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  font-size: 1rem;
+  flex: 1;
+  min-width: 120px;
+}
+
+.cancel-btn {
+  background: var(--base-color);
+  color: var(--text-color);
+}
+
+.save-btn {
+  background: var(--brand-color);
+  color: white;
+}
+
+.save-btn:hover {
+  background: #7a7fff;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--secondary-text-color);
+}
+
+.empty-state h2 {
+  font-size: 1.25rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.empty-state p {
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.color-swatch {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  outline: none;
+  transition: border 0.2s;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.color-swatch.selected {
+  border: 2px solid var(--brand-color);
+}
+
+.danger-btn {
+  padding: 0.875rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  font-size: 1rem;
+  flex: 1;
+  min-width: 120px;
+  background: #ff5252;
+  color: white;
+}
+.danger-btn:hover {
+  background: #d32f2f;
+}
+
+.trash-btn {
+  background: var(--surface-color);
+  color: var(--text-color);
+  border: 1px solid var(--surface-color);
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  min-height: 44px;
+  font-size: 1.125rem;
+  margin-left: 0;
+}
+.trash-btn:hover {
+  background: #ff5252;
+  color: white;
+}
+
+.fab-trash-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #ff5252;
+  color: white;
+  border: none;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.2s, box-shadow 0.2s, transform 0.1s;
+  font-size: 1.25rem;
+}
+.fab-trash-btn:hover {
+  background: #d32f2f;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.22);
+  transform: scale(1.07);
+}
+
+.icon-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  min-height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: var(--base-transparent-90);
+  color: var(--text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  margin-right: 0.25rem;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+}
+.icon-btn:last-child {
+  margin-right: 0;
+}
+.icon-btn:hover {
+  background: var(--brand-color);
+  color: #fff;
+}
+.restore-btn {
+  background: #e0f7fa;
+  color: #0097a7;
+}
+.restore-btn:hover {
+  background: #0097a7;
+  color: #fff;
+}
+.delete-forever-btn {
+  background: #ffebee;
+  color: #d32f2f;
+}
+.delete-forever-btn:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+.pin-btn.icon-btn {
+  background: #e0f7fa;
+  color: #0097a7;
+}
+.pin-btn.icon-btn:hover {
+  background: #0097a7;
+  color: #fff;
+}
+.edit-btn.icon-btn {
+  background: #e3f2fd;
+  color: #1976d2;
+}
+.edit-btn.icon-btn:hover {
+  background: #1976d2;
+  color: #fff;
+}
+.delete-btn.icon-btn {
+  background: #ffebee;
+  color: #d32f2f;
+}
+.delete-btn.icon-btn:hover {
+  background: #d32f2f;
+  color: #fff;
+}
+
+/* Tablet Styles */
+@media (min-width: 768px) {
+  body {
+    margin: 1.5rem;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: left;
+  }
+  
+  header > div {
+    flex-direction: row;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  #searchInput {
+    max-width: 350px;
+    width: 100%;
+    min-width: 160px;
+    flex: 1 1 160px;
+    margin-top: 0;
+  }
+  
+  .theme-toggle-btn {
+    margin-left: 1rem;
+    padding: 0.625rem 1rem;
+    font-size: 1.125rem;
+  }
+  
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+  
+  .note-card {
+    padding: 1.5rem;
+  }
+  
+  .note-title {
+    font-size: 1.25rem;
+  }
+  
+  .note-actions {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .note-card:hover .note-actions {
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  .dialog-content {
+    padding: 2rem;
+  }
+  
+  .dialog-title {
+    font-size: 1.5rem;
+  }
+  
+  .dialog-actions {
+    gap: 1rem;
+  }
+  
+  .cancel-btn, .save-btn {
+    flex: none;
+  }
+  
+  .empty-state {
+    padding: 4rem 2rem;
+  }
+  
+  .empty-state h2 {
+    font-size: 1.5rem;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1024px) {
+  body {
+    margin: 2rem;
+  }
+  
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .note-card:hover {
+    transform: scale(1.02);
+  }
+  
+  dialog {
+    width: 90vw;
+  }
+}
+
+/* Large Desktop Styles */
+@media (min-width: 1440px) {
+  .notes-grid {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  }
+}
+
+/* High DPI Displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .note-card {
+    border-width: 0.5px;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .note-card:hover {
+    transform: none;
+  }
+  
+  .edit-btn:hover, .delete-btn:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 767px) {
+  header > div {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+  #searchInput {
+    max-width: 100%;
+    min-width: 0;
+    width: 100%;
+    order: -1;
+    font-size: 1.05rem;
+    padding: 1rem;
+  }
+  .action-buttons {
+    display: flex !important;
+    flex-direction: row;
+    gap: 0.5rem;
+    width: 100%;
+    justify-content: flex-start;
+  }
+  .note-actions {
+    position: static;
+    margin-top: 0.5rem;
+    justify-content: flex-end;
+    opacity: 1 !important;
+    visibility: visible !important;
+    gap: 0.5rem;
+  }
+  .note-title {
+    padding-right: 0;
+  }
+  .fab-trash-btn {
+    width: 40px;
+    height: 40px;
+    bottom: 1.25rem;
+    right: 1.25rem;
+    font-size: 1rem;
+  }
+}
