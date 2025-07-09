@@ -1,6 +1,8 @@
 # quick-notes
 I’ve built a Notes App using HTML, CSS, and JavaScript that allows users to easily create, edit ,view, and delete notes — all stored in the browser using localStorage, so your data stays even after refreshing the page!
 
+🌐 Live Project: https://quick-notes-binay.netlify.app/
+
 In light mode
 ![image alt](https://github.com/BinaySharma25/quick-notes/blob/main/Screenshots/quick-notes_light.png?raw=true)
 
